@@ -41,3 +41,7 @@ img {
 #map {
   height: 100%;
 }
+#locateMe {
+  margin-right: 12px;
+  margin-bottom: 20%;
+}
