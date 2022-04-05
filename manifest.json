@@ -1,39 +1,39 @@
 {
-  "name": "Pokedex",
-  "short_name": "Pokedex",
-  "start_url": "https://goyalish.github.io/pokedex/",
+  "name": "Nitesh Goyal Locator",
+  "short_name": "Locator",
+  "start_url": "https://goyalish.github.io/pwa-locator/",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#fff",
   "theme_color": "#000",
   "icons": [
     {
-      "src": "assets/images/icon.png",
+      "src": "assets/images/locator.png",
       "type": "image/png",
       "sizes": "48x48"
     },
     {
-      "src": "assets/images/icon.png",
+      "src": "assets/images/locator.png",
       "type": "image/png",
       "sizes": "96x96"
     },
     {
-      "src":"assets/images/icon.png",
+      "src":"assets/images/locator.png",
       "sizes": "144x144",
       "type": "image/png"
     },
     {
-      "src": "assets/images/icon.png",
+      "src": "assets/images/locator.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "assets/images/icon.png",
+      "src": "assets/images/locator.png",
       "type": "image/png",
       "sizes": "512x512"
     },
     {
-      "src": "assets/images/maskable_icon.png",
+      "src": "assets/images/locator.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
@@ -44,19 +44,19 @@
       "name": "Open Messages",
       "short_name": "Messages",
       "description": "Open the app to your messages",
-      "url": "https://goyalish.github.io/pokedex/messages",
+      "url": "https://goyalish.github.io/pwa-locator",
       "icons": [{ "src": "assets/images/messages.png", "sizes": "192x192" }]
     },
     {
       "name": "Open Settings",
       "short_name": "Settings",
       "description": "Open the app to the settings",
-      "url": "https://goyalish.github.io/pokedex/settings",
+      "url": "https://goyalish.github.io/pwa-locator",
       "icons": [{ "src": "assets/images/settings.png", "sizes": "192x192" }]
     }
   ],
   "share_target": {
-    "action": "https://goyalish.github.io/pokedex/index.html",
+    "action": "https://goyalish.github.io/pwa-locator/index.html",
     "method": "GET",
     "params": {
       "title": "title",

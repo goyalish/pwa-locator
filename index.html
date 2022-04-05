@@ -1,74 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pokedex</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#75929D" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet" />
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon.png" />
-    <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="16x16" />
-    <link rel="manifest" href="manifest.json" />
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" />
-    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css" />
-    <link rel="stylesheet" type="text/css" href="src/app.css" />
-  
-  </head>
 
-  <body>
-    <ons-navigator id = "navigator" swipeable page="index.html"></ons-navigator>
-    <template id="index.html">
-      <ons-page id="home">
-        <ons-toolbar>
-          <div class="center">My Pokedex</div>
-        </ons-toolbar>
+<head>
+  <title>Locator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#75929D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;900&display=swap" rel="stylesheet" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/icon.png" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="assets/images/icon.png" sizes="16x16" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" type="text/css" href="src/app.css" />
 
-        <ons-list id="pokemonList">
-          
-        </ons-list>
-      </ons-page>
-    </template>
+  <link rel="stylesheet" href="https://unpkg.com/onsenui@2.11.2/css/onsenui-core.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/onsenui@2.11.2/css/onsenui.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/onsenui@2.11.2/css/onsen-css-components.min.css" />
+  <link rel="stylesheet" href="theme/onsen-css-components.css">
+  <link rel="stylesheet" href="theme/onsen-css-components.min.css">
 
-    <template id="details.html">
-      <ons-page id="details">
-        <ons-toolbar>
-          <div class="left"><ons-back-button>Back</ons-back-button></div>
-          <div id="tbTitle" class="center">Pokedex</div>
-        </ons-toolbar>
 
-        <ons-card>
-          <img id="imgPokemon" style="width: 30%"/>
-          <div id="pokemonTitle" class="title">Cool Lightning</div>
-          <ons-list-header>TYPES</ons-list-header>
-          <ons-list id="typesList">
-            
-          </ons-list>
-          <ons-list-header>STATS</ons-list-header>
-          <ons-list id="statsList">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+  <script src="https://unpkg.com/localforage@1.10.0/dist/localforage.min.js"></script>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+</head>
 
-          </ons-list>
-        </ons-card>
-      </ons-page>
-    </template>
-  </body>
+<body>
+  <ons-navigator id="navigator" swipeable page="index.html"></ons-navigator>
+  <template id="index.html">
+    <ons-page id="home">
+      <ons-toolbar>
+        <div class="center">Locator</div>
+      </ons-toolbar>
+      <ons-button id="removeMarkers" >Remove all markers</ons-button>
+      <div id="map"></div>
+      <ons-fab id="locateMe" position="bottom right" style="margin-right: 60px;">
+        <ons-icon icon="md-plus"></ons-icon>
+      </ons-fab>
+    </ons-page>
+  </template>
+</body>
 
-  <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-  
+<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
 
-  <script type="text/javascript">
-    const registerSW = async () => {
-      if ("serviceWorker" in navigator) {
-        try {
-          await navigator.serviceWorker.register(`${window.location.href}service-worker.js`);
-          console.log("Service Worker Registered");
-        } catch (e) {
-          console.error("Error registering Service Worker...", e);
-        }
+<script type="text/javascript">
+  const registerSW = async () => {
+    if ("serviceWorker" in navigator) {
+      try {
+        await navigator.serviceWorker.register(`${window.location.href}service-worker.js`);
+        console.log("Service Worker Registered");
+      } catch (e) {
+        console.error("Error registering Service Worker...", e);
       }
-    };
-    registerSW();
-  </script>
-  <script src="src/app.js"></script>
+    }
+  };
+  registerSW();
+</script>
+<script src="src/app.js"></script>
+
 </html>
